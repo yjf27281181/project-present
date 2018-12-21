@@ -1,0 +1,36 @@
+nz-avatar {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+h3 {
+  color: black;
+  text-align: center;
+}
+
+h4 {
+  color: black;
+  text-align: center;
+}
+.introduction {
+  color: black;
+
+}
+
+nz-divider {
+  color: black;
+}
+
+.controller-center {
+  text-align: center
+}
+
+.view-background {
+  background-color: black;
+}
+i, img{
+  color: rgb(24,144,255);
+  height: 20px;
+}
+

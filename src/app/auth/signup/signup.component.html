@@ -1,0 +1,131 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <br>
+    <br>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="username" nzRequired>
+        <span>
+          username
+          <i nz-icon nz-tooltip nzTitle="This would be your url" type="question-circle" theme="outline"></i>
+        </span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input [readonly]="mode==='update'" nz-input id="username" formControlName="username">
+        <nz-form-explain *ngIf="validateForm.get('username').dirty && validateForm.get('username').errors">Please input your nickname!</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-content *ngIf="mode === 'create'">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input type="password" id="password" formControlName="password" (ngModelChange)="updateConfirmValidator()">
+          <nz-form-explain *ngIf="validateForm.get('password').dirty && validateForm.get('password').errors">Please input your password!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input type="password" formControlName="checkPassword" id="checkPassword">
+          <nz-form-explain *ngIf="validateForm.get('checkPassword').dirty && validateForm.get('checkPassword').errors">
+            <ng-container *ngIf="validateForm.get('checkPassword').hasError('required')">
+              Please confirm your password!
+            </ng-container>
+            <ng-container *ngIf="validateForm.get('checkPassword').hasError('confirm')">
+              Two passwords that you enter is inconsistent!
+            </ng-container>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+
+  </nz-content>
+
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">first name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input formControlName="firstName" id="firstName">
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24">last name</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="lastName" id="lastName">
+        </nz-form-control>
+      </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input formControlName="email" id="email">
+        <nz-form-explain *ngIf="validateForm.get('email').dirty && validateForm.get('email').errors">The input is not valid E-mail!</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber">Phone Number</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']">
+        <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+          <ng-template #addOnBeforeTemplate>
+            <nz-select formControlName="phoneNumberPrefix" style="width: 70px;">
+              <nz-option nzLabel="+1" nzValue="+1"></nz-option>
+              <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+              <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+            </nz-select>
+          </ng-template>
+          <input formControlName="phoneNumber" id="'phoneNumber'" nz-input>
+        </nz-input-group>
+        <nz-form-explain *ngIf="validateForm.get('phoneNumber').dirty && validateForm.get('phoneNumber').errors">Please input your phone number!</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">School</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input formControlName="currentSchool" id="currentSchool">
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">Major</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input nz-input formControlName="currentMajor" id="currentMajor">
+        <nz-form-explain *ngIf="validateForm.get('currentMajor').dirty && validateForm.get('currentMajor').errors">???</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24">Location</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="location" id="location">
+          <nz-form-explain *ngIf="validateForm.get('location').dirty && validateForm.get('location').errors">???</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">self-introduction</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <textarea formControlName="selfIntroduction" nz-input rows="2" placeholder="write any thing"></textarea>
+        <nz-form-explain *ngIf="validateForm.get('selfIntroduction').dirty&&validateForm.get('selfIntroduction').hasError('required')">Please write something here!</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24">skills</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <app-tag [(tags)]="skills" [isEditable]=true (getTagsChanged)='onTagChanged($event)'></app-tag>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row style="margin-bottom:8px;">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <label nz-checkbox formControlName="agree">
+          <span>I have read the <a>agreement</a></span>
+        </label>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row style="margin-bottom:8px;">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Register</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>`,

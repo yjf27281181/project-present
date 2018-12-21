@@ -1,0 +1,50 @@
+
+
+<div nz-row class="project-detail" >
+  <div nz-col nzSpan="17">
+
+    <ng-container *ngIf="project">
+        <div nz-row class="project-title">
+          <h1 *ngIf="project" id ="test">{{project.title}}</h1>
+          <br>
+
+        </div>
+        <div nz-row class="project-tags">
+          <app-tag [(tags)]='project.keyWords' (isEditable)=false></app-tag>
+        </div>
+
+        <div *ngFor="let part of project.parts; index as i;" class="project-content">
+
+        <div *ngIf="part.type === 'hint'" class="project-hint">
+              <nz-divider nzType="vertical"></nz-divider>
+
+              <p><i nz-icon type="bulb" theme="fill"></i> {{'  ' + part.content}}</p>
+        </div>
+        <div *ngIf="part.type === 'subtitle'"  id="{{'title'+i}}">
+          <br>
+          <h2>{{part.content}}</h2>
+        </div>
+        <div *ngIf="part.type === 'subsubtitle'"  id="{{'title'+i}}">
+          <br>
+          <h3>{{part.content}}</h3>
+          <nz-divider></nz-divider>
+        </div>
+        <p *ngIf="part.type === 'paragraph'" #{{part.type}}>{{part.content}}
+          <br>
+        </p>
+
+        <div class="img-content" *ngIf="part.type === 'image'">
+          <img #{{part.type}} src = '{{part.url}}'>
+          <br>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div nz-col [nzOffset]=1 nzSpan="5" class="project-menu">
+    <app-project-menu></app-project-menu>
+  </div>
+</div>
+
+
+
+

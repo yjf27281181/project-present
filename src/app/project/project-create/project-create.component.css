@@ -1,0 +1,49 @@
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+  color: red;
+  transition: all .3s;
+  margin: 5px;
+}
+
+.dynamic-delete-button:hover {
+  color: royalblue;
+}
+
+.dynamic-add-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+  color: green;
+  transition: all .3s;
+  margin: 5px;
+}
+
+.dynamic-add-button:hover {
+  color: royalblue;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  text-align: center;
+}
+
+img {
+  height: 100px;
+}
+
+nz-content {
+  background-color: white;
+}
+
+.subtitle {
+
+  background-color: black;
+  color: white;
+}

@@ -1,0 +1,22 @@
+nz-list {
+  margin: 40px;
+}
+
+.img-cover {
+  max-width: 250px;
+  max-height: 150px;
+}
+
+.skill-wall {
+  margin-top: 40px;
+}
+
+nz-content {
+  max-height: 200px;
+}
+
+nz-divider {
+  height: 180px;
+  margin-top: 40px;
+
+}

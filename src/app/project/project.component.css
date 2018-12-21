@@ -1,0 +1,29 @@
+nz-content {
+  width: 100%;
+  min-height: 700px;
+  /* margin-left: 300px; */
+  background-color: white;
+}
+
+.self-instruction {
+  background-color: white;
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0
+}
+
+.self-background{
+  background-image: url('../../assets/img/sider-bg.PNG');
+  background-repeat: repeat-y;
+}
+
+div {
+  background-color: white;
+}
+
+
+nz-divider {
+  margin-left: 300px;
+  height: 100%;
+}

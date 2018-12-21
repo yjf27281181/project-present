@@ -1,0 +1,41 @@
+
+
+<ul class="list" role="navigation">
+  <li><button nz-button class="fa-home" nzType="default"><i nz-icon type="home"></i>Main Page</button></li>
+  <li><h2>     Project Present</h2></li>
+  <li class="logo"><img src="../../assets/img/logo2.png"></li>
+
+  <li><h3 routerLink="{{'/project/' + this.authService.getUsername()}}" routerLinkActive="router-link-active"
+    >{{this.authService.getUsername()}}</h3></li>
+
+  <li *ngIf="authService.getIsAuth()" class="drop-menu">
+    <nz-row>
+      <nz-dropdown>
+        <button nz-dropdown nz-button nzType="default" nzValue="small" nzGhost>options</button>
+        <ul nz-menu>
+          <li nz-menu-item>
+            <a routerLink="/create" routerLinkActive="router-link-active" >
+              <i nz-icon type="plus" theme="outline"></i>
+              create a new project</a>
+          </li>
+          <li nz-menu-item>
+            <a (click)="onChangeUserData()">
+              <i nz-icon type="edit" theme="outline"></i>
+              change user data</a>
+          </li>
+          <li nz-menu-item>
+            <a (click)="onLogout()">log out</a>
+          </li>
+        </ul>
+      </nz-dropdown>
+    </nz-row>
+  </li>
+  <li *ngIf="authService.getIsAuth()"><h3></h3></li>
+
+  <li *ngIf="!authService.getIsAuth()"><button nz-button nzType="primary" routerLink="/login">Login</button></li>
+  <li *ngIf="!authService.getIsAuth()"><button nz-button nzGhost routerLink="/signup">sign up</button></li>
+
+
+</ul>
+
+

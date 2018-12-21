@@ -1,0 +1,18 @@
+.icon-small {
+  float: left;
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+  /* ... */
+}
+
+img {
+  height: 20px;
+}
+i {
+  color: royalblue;
+}
+
+h3 {
+  color: rgb(24,144,255);
+}

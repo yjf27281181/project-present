@@ -1,0 +1,17 @@
+
+.anchor {
+  background-color: white
+}
+
+nz-header {
+  background-color: #020117;
+}
+
+nz-footer {
+  min-height: 300px;
+}
+
+.my-footer {
+  margin-left: 300px;
+  margin-top: 50px;
+}

@@ -1,0 +1,143 @@
+<nz-content>
+  <form nz-form [formGroup]="form" (ngSubmit)="onUploadProject()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5" nzRequired>Title</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzValidateStatus="success" nzHasFeedback>
+        <input nz-input formControlName="title" name="successValid" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5" nzRequired>Key Words</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+          <app-tag [(tags)]="keyWords" [isEditable]=true (getTagsChanged)='onTagChanged($event)'></app-tag>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5" nzRequired>description</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <textarea formControlName="description"
+          nz-input
+          rows="5"
+          placeholder="write a description of this project"
+        ></textarea>
+        <nz-form-explain
+          *ngIf="form.get('description').dirty &&
+            form.get('description').hasError('required')
+          "
+          >Please write something here!</nz-form-explain
+        >
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5" nzRequired>cover image</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <div class="image-preview">
+          <img
+            [src]="coverPreview"
+            alt="cover"
+            *ngIf="coverPreview && ( isString(coverPreview) || form.get('coverImg').valid)"
+          />
+        </div>
+        <button nz-button type="button" nzType="default"
+        (click)="filePicker.index = -1; filePicker.click();">Select Cover Image</button>
+      </nz-form-control>
+
+    </nz-form-item>
+
+    <nz-divider nzText="content"></nz-divider>
+
+    <!-- content -->
+    <div *ngFor="let control of controlArray; index as i">
+      <nz-form-item>
+        <div *ngIf="control.type === 'subtitle'">
+          <nz-form-label [nzSpan]="5">subtitle</nz-form-label>
+          <nz-form-control [nzSpan]="12"  nzHasFeedback>
+            <input nz-input class="subtitle" [formControlName]="control.strId"/>
+          </nz-form-control>
+        </div>
+
+        <div *ngIf="control.type === 'subsubtitle'">
+          <nz-form-label [nzSpan]="5">subsubtitle</nz-form-label>
+          <nz-form-control [nzSpan]="12" nzHasFeedback>
+            <input nz-input [formControlName]="control.strId"  />
+          </nz-form-control>
+        </div>
+
+        <div *ngIf="control.type === 'hint'">
+
+          <nz-form-label [nzSpan]="5">
+            <nz-row>
+              <i nz-icon type="bulb" style="color: gold" theme="outline"></i>
+              hint
+            </nz-row>
+          </nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <textarea [formControlName]="control.strId"
+              nz-input rows="2"placeholder="write a hint"></textarea>
+            <nz-form-explain
+              *ngIf="
+                form.get(control.strId).dirty &&
+                form.get(control.strId).hasError('required')
+              "
+              >Please write something here!</nz-form-explain
+            >
+          </nz-form-control>
+        </div>
+
+        <div *ngIf="control.type === 'paragraph'">
+          <nz-form-label [nzSpan]="5">paragraph</nz-form-label>
+          <nz-form-control [nzSpan]="12">
+            <textarea [formControlName]="control.strId"
+              nz-input rows="5"placeholder="write any thing"></textarea>
+            <nz-form-explain
+              *ngIf="
+                form.get(control.strId).dirty &&
+                form.get(control.strId).hasError('required')
+              "
+              >Please write something here!</nz-form-explain
+            >
+          </nz-form-control>
+        </div>
+        <div *ngIf="control.type === 'image'">
+            <nz-form-control [nzOffset]="5" [nzSpan]="12">
+              <i nz-icon type="link" theme="outline"></i>
+              {{control.fileName}}
+            </nz-form-control>
+        </div>
+        <nz-dropdown [nzPlacement]="'bottomLeft'">
+          <i nz-icon nz-dropdown type="plus-circle-o" class="dynamic-add-button"></i>
+          <ul nz-menu>
+            <li nz-menu-item>
+              <a (click)="addField('subtitle', i)">add one more subtitle</a>
+            </li>
+            <li nz-menu-item>
+              <a (click)="addField('subsubtitle', i)">add one more subsubtitle</a>
+            </li>
+            <li nz-menu-item>
+                <a (click)="addField('hint', i)">add one more hint</a>
+              </li>
+            <li nz-menu-item>
+              <a (click)="addField('paragraph', i)">add one more paragraph</a>
+            </li>
+            <li nz-menu-item>
+              <a (click)="filePicker.index = i; filePicker.click();">add one more image</a>
+            </li>
+          </ul>
+        </nz-dropdown>
+        <i nz-icon type="minus-circle-o" (click) = "removeField(control)" class="dynamic-delete-button"></i>
+
+      </nz-form-item>
+
+    </div>
+    <nz-form-item>
+      <nz-form-control [nzXs]="{span:24,offset:0}" [nzSm]="{span:20,offset:4}">
+        <button nz-button nzType="primary">Submit</button>
+      </nz-form-control>
+    </nz-form-item>
+
+    <input type='file' #filePicker (change)="onImagePicked(filePicker.index, $event)" multiple="multiple">
+  </form>
+</nz-content>

@@ -1,0 +1,22 @@
+.login-form {
+  margin: auto;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.background {
+  display: flex;
+  background-size:100% 100%;
+  min-height: 700px;
+  background-image: url('../../../assets/img/login-bg.jpg');
+}
+
+.words {
+  color: white;
+}

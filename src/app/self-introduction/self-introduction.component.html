@@ -1,0 +1,51 @@
+
+<br>
+<br>
+<br>
+<div nz-row *ngIf="user">
+
+    <div nz-col nzSpan="24">
+      <div class="controller-center" nz-col nzSpan="24">
+          <nz-avatar [nzText]="user.firstName" nzSize="large" [ngStyle]="{'background-color': '#7265e6'}"
+          routerLink="{{'/project/' + user.username}}" routerLinkActive="router-link-active">
+          </nz-avatar>
+      </div>
+      <br>
+      <br>
+      <nz-divider nzText="{{user.firstName + ' ' + user.lastName}}">
+      </nz-divider>
+      <div nz-col nzSpan="24">
+        <br>
+        <h3> {{user.currentSchool}}</h3>
+      </div>
+      <div nz-col nzSpan="24">
+          <h4>{{user.currentMajor}}</h4>
+      </div>
+      <div nz-col nzSpan="24">
+          <h4><i nz-icon type="mail" theme="outline"></i>
+            {{user.email}}</h4>
+      </div>
+      <div nz-col nzSpan="24">
+
+          <h4><i nz-icon type="phone" theme="outline"></i>
+            {{user.phoneNumber}}</h4>
+      </div>
+      <div nz-col nzSpan="22" [nzOffset]="2" class="introducton">
+          <br>
+          <br>
+          <p>{{user.selfIntroduction}}</p>
+          <i nz-icon type="environment" theme="outline"></i>
+            {{user.location}}
+          <br>
+          <br>
+      </div>
+      <div nz-col nzSpan="4" [nzOffset]="2" class="introducton">
+          <i nz-icon type="like" theme="twotone"></i>  : 100
+      </div>
+      <div nz-col nzSpan="10" [nzOffset]="2" class="introducton">
+        <i nz-icon type="eye" theme="twotone"></i>  : {{user.views}}
+      </div>
+    </div>
+</div>
+
+

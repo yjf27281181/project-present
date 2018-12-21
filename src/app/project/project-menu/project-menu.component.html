@@ -1,0 +1,6 @@
+<nz-anchor *ngIf="subtitles">
+  <nz-link *ngFor="let subtitle of subtitles" nzHref="#{{subtitle.id}}" nzTitle="{{subtitle.content}}" >
+    <nz-link *ngFor="let subsub of subtitle.subsubtitles"
+    nzHref="#{{subsub.id}}" nzTitle="{{subsub.content}}"></nz-link>
+  </nz-link>
+</nz-anchor>

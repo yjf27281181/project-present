@@ -1,0 +1,52 @@
+<div nz-row>
+  <div nz-col nzSpan="16">
+
+    <nz-list [nzDataSource]="projectsInfo" [nzRenderItem]="item" [nzItemLayout]="'vertical'" nz-col>
+
+        <ng-template #item let-item>
+          <nz-card>
+            <nz-content>
+              <nz-list-item [nzContent]="loading?' ':item.description" [nzActions]="loading?[]:
+              authService.getUserId() === item.creatorId?
+              [starAction,likeAction,modifyAction,deleteAction]:
+              [starAction,likeAction]" [nzExtra]="loading?'':extra">
+                <nz-skeleton [nzLoading]="loading" [nzActive]="true" [nzAvatar]="true">
+                  <ng-template #starAction><i nz-icon type="star-o" style="margin-right: 8px;"></i> 156</ng-template>
+                  <ng-template #likeAction><i nz-icon type="like-o" style="margin-right: 8px;"></i> 156</ng-template>
+                  <ng-template #modifyAction ><a nz-icon type="setting" style="margin-right: 8px;"
+                    routerLink="{{'/modify/' + item._id}}" routerLinkActive="router-link-active"></a></ng-template>
+                  <ng-template #deleteAction ><a [theme]="'twotone'"
+                    [twoToneColor]="'red'" nz-icon type="delete" style="margin-right: 8px;"
+                    (click)="onDeleteProject(item._id)"></a></ng-template>
+                  <nz-list-item-meta
+                    [nzAvatar]="item.avatar"
+                    [nzTitle]="nzTitle"
+                    [nzDescription]="item.createDate">
+                    <ng-template #nzTitle><a routerLink="{{item._id}}" routerLinkActive="router-link-active" >{{item.title}}</a></ng-template>
+                  </nz-list-item-meta>
+                  <ng-template #extra>
+                    <img alt="logo" src="{{item.coverImgUrl}}" class="img-cover">
+                  </ng-template>
+                </nz-skeleton>
+              </nz-list-item>
+
+            </nz-content>
+          </nz-card>
+          <br>
+        </ng-template>
+
+
+    </nz-list>
+  </div>
+  <div nz-col nzSpan="1">
+    <nz-divider nzType="vertical"></nz-divider>
+  </div>
+
+  <div nz-col nzSpan="4" class="skill-wall" *ngIf="this.user">
+    <h1>Skills</h1>
+    <app-tag [(tags)]='this.user.skills' (isEditable)=false></app-tag>
+  </div>
+</div>
+
+
+

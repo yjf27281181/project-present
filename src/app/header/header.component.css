@@ -1,0 +1,41 @@
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.list {
+  display: flex;
+}
+
+.logo {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+button {
+  margin: 5px;
+}
+
+img {
+  height: 50px;
+}
+
+h2 {
+  color: white;
+  font-size: x-large;
+}
+
+h3 {
+  color: rgb(24,144,255);
+}
+
+
+.drop-menu {
+  margin-right: 30px;
+}
+
+i {
+  color: royalblue;
+}
